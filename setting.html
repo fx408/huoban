@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Getting Started Extension's Popup</title>
+		<link href="css/app.css" rel="stylesheet">
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+  </head>
+  <body>
+  	<div>
+  		<table id="setting">
+  			<tr>
+  				<td>自动检测：</td>
+  				<td>
+  					<input type="radio" name="autoCheck" value="1" checked="checked">开&nbsp;&nbsp;
+  					<input type="radio" name="autoCheck" value="0">关
+  				</td>
+  				<td></td>
+  			</tr>
+  			
+  			<tr class="frequency">
+  				<td>检测频率：</td>
+  				<td><input type="text" value="600" name="frequency">(秒/s)</td>
+  				<td>10-1000之间</td>
+  			</tr>
+  			
+  		</table>
+  	</div>
+  	
+  	<script type="text/javascript" src="js/localStorage.js"></script>
+  	<script type="text/javascript" src="js/setting.js"></script>
+  </body>
+</html>
+
