@@ -52,5 +52,50 @@ body{min-width:330px; padding:5px;}
 
 .odd{background-color:#fafafa}
 
-ul li{ line-height:22px; height:22px;}
-ul li:hover{background-color:#FCF78F;}
+.topicList ul li{ line-height:22px; height:22px;}
+.topicList ul li:hover{background-color:#FCF78F;}
+
+/*
+ * 通讯录
+ */
+.groupList{min-height:140px; max-height:450px; overflow:auto}
+.groupList .groupName{color:#09f; font-size:12px; font-weight:600;}
+.groupList .groupCount{margin-left:5px; color:#777}
+
+li.user{line-height:32px; height:32px; margin:0 0 5px 0; cursor:pointer;}
+li.user:hover{background-color:#8FABFC;}
+
+.groupList .avatar{width:32px; height:32px; float:left}
+.uName{padding:0 5px; font-size:16px; font-weight:600}
+.groupList .uValue{color:#777}
+
+.searchLayer{height:30px; line-height:30px;}
+#userDetail{padding:5px; position:fixed; background-color:#fff; 
+	top:32px; width:308px; text-align:center; margin-left:-2px;
+	border:0px solid #ccc;
+	border-radius:3px; 
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.7);
+}
+#userDetail:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);}
+
+#userDetail .contents div{width:100%; text-align:left}
+#userDetail .operator{border-top: 1px solid #ddd; margin-top:2px;}
+
+a.btnSet {
+	float: right;
+	z-index: 999;
+	overflow: hidden;
+	text-indent: -999px;
+	display: block;
+	width: 26px;
+	height: 26px;
+	background: url(../images/icon_set.png) no-repeat 0 0;
+	border-radius:2px;
+}
+#userSet{margin-top:3px; margin-right:3px;}
+
+a.btnSet:hover{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6); background-position: 0 -26px; background-color:#fff}
+a.btnSet:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4); background-color:#f0f0f0}
+
+/*分组设置*/
+table.group{width:100%; text-align:center;}

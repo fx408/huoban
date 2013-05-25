@@ -18,9 +18,13 @@ function HuobanBackground() {
 		
 		var params = {
 			callback: function() {
-				var c = huoban.notReadCount ? (huoban.notReadCount > 10 ? '10+' : huoban.notReadCount.toString()) : "0";
-				
 				if(showLoadingAnimation) LA.stop();
+				var c = "0";
+				
+				if(huoban.error == false) {
+					huoban.count();
+					c = huoban.notReadCount ? (huoban.notReadCount > 10 ? '10+' : huoban.notReadCount.toString()) : "0";
+				}
 				
 				chrome.browserAction.setIcon({path: "/images/icon.png"});
 				chrome.browserAction.setBadgeBackgroundColor({color:[208, 0, 24, 255]});
