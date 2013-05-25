@@ -1,7 +1,7 @@
 {
 	"background": {
     "persistent": false,
-    "page": "background.html"
+    "page": "pages/background.html"
   },
   
   "manifest_version": 2,
@@ -16,11 +16,10 @@
   	"alarms",
     "tabs",
     "webNavigation",
-    "https://secure.flickr.com/",
     "*://*.huoban.com/"
   ],
   "browser_action": {
     "default_icon": "images/icon.png",
-    "default_popup": "popup.html"
+    "default_popup": "pages/popup.html"
   }
 }

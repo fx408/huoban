@@ -22,7 +22,7 @@ function HuobanBackground() {
 				
 				if(showLoadingAnimation) LA.stop();
 				
-				chrome.browserAction.setIcon({path: "images/icon.png"});
+				chrome.browserAction.setIcon({path: "/images/icon.png"});
 				chrome.browserAction.setBadgeBackgroundColor({color:[208, 0, 24, 255]});
 				chrome.browserAction.setBadgeText({text: c});
 				
@@ -46,16 +46,20 @@ function HuobanBackground() {
 		testTimes++;
 	}
 	
+	this._setTimeout = function(func, time) {
+		var _this = this;
+
+		setTimeout(function() {
+			_this[func]();
+		}, time*1000);
+	}
+	
 	// 运行
 	this.run = function() {
-		var auto = LDB.item('autoCheck'),
-			_this = this;
+		var auto = LDB.item('autoCheck');
 		
 		if(auto === 0 || busy == true) {
-			setTimeout(function() {
-				_this.run();
-			}, this.defaults.time*1000);
-			
+			this._setTimeout("run", this.defaults.time);
 			countTestTimes();
 			return false;
 		}
@@ -65,11 +69,7 @@ function HuobanBackground() {
 		frequency = Math.max(10, Math.min(parseInt(frequency), 1000));
 		
 		showLoadingAnimation = false;
-		
-		setTimeout(function() {
-			_this.run();
-		}, frequency*1000);
-		
+		this._setTimeout("run", frequency);
 		request();
 	}
 }

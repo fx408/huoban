@@ -78,20 +78,19 @@ function HuoBan() {
   	
   	var newTopic = document.getElementById("newTopic"),
   		notRead = document.getElementById("notRead"),
-  		count = {0:0, 1:1};
+  		count = {0:0, 1:1},
+  		a, li, suffix, topic;
   	
   	for(var k in this.list.topics) {
-  		var topic = this.list.topics[k];
-  		
+  		topic = this.list.topics[k];
   		if(!topic.tId) break;
   		
-  		var a = document.createElement("a"),
-  			li = document.createElement("li");
+  		a = document.createElement("a");
+  		li = document.createElement("li");
+  		suffix = topic.tSubject.length > 20 ? '...' : '';
   		
   		a.href = "http://www.huoban.com/#/topic/viewForStarredProjects?tId="+topic.tId;
   		a.title = topic.tSubject;
-  		
-  		var suffix = topic.tSubject.length > 20 ? '...' : '';
   		a.innerHTML = topic.tSubject.substring(0, 20)+suffix;
   		a.target = "_blank"
   		
