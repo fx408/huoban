@@ -3,7 +3,7 @@ function ContactGroup() {
 	this.lastId = 0;
 	
 	this.init = function() {
-		this.list = LDB.item("groupList") || "{}";
+		this.list = LDB.item("groupList") || {};
 		this.show();
 	}
 	
