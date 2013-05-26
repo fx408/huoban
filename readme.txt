@@ -1,1 +1,3 @@
-伙伴 标星工作区 未读话题提醒
+伙伴 chrome 插件
+
+http://www.huoban.com/
