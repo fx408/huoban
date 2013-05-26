@@ -16,7 +16,7 @@ function ContactGroup() {
 					'<span class="add-on">'+k+'</span>'+
 					'<input class="span2 inputGroupName" value="'+this.list[k].name+'" type="text" placeholder="">'+
 				'</div></td>'+
-  			'<td style="vertical-align: inherit;"><a href="javascript:;" class="del">删除</a></td>'+
+  			'<td class="va-inherit"><a href="javascript:;" class="del">删除</a></td>'+
   			'</tr>';
 			
 			this.lastId = k;

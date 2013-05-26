@@ -9,9 +9,8 @@ var footer = '<div class="navbar" style="margin: 0px 5px 5px 0px;"><div class="n
   '</div></div>';
 document.write(footer);
 
-//$(".navbar .nav li").css({"border-right": "0px", "border-left": "0px"});
-var _href = window.location.href.replace(/.*?\/pages\/(.*?)\.html$/, "/pages/$1.html");
+$(function() {
+	var _href = window.location.href.replace(/.*?\/pages\/(.*?)\.html$/, "/pages/$1.html");
+	$(".navbar a[href='"+_href+"']").parent("li").removeClass().addClass("active");
+});
 
-console.log(_href);
-
-$(".navbar a[href='"+_href+"']").parent("li").removeClass().addClass("active");

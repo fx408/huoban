@@ -60,6 +60,7 @@ function HuoBanContact() {
 			setting = {};
 		
 		$("#groupList").empty();
+		groups[0] = {name:"未分组"};
 		
 		for(var k in this.data) {
 			setting = LDB.item(this.settingKey+this.data[k]['uId']) || {};

@@ -34,7 +34,7 @@ body{min-width:330px; padding:5px; padding-right:0px;}
 .topicList{margin-top:-21px;}
 
 .settingInput{margin-bottom:0px;}
-
+.table td.va-inherit{vertical-align: inherit;}
 
 /*
  * 通讯录
