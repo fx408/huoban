@@ -63,15 +63,16 @@ function HuoBanContact() {
 		
 		for(var k in this.data) {
 			setting = LDB.item(this.settingKey+this.data[k]['uId']) || {};
-			if(!setting.group) setting.group = 0;
+			if(!setting.group || !groups[setting.group]) setting.group = 0;
 			if(!html[setting.group]) html[setting.group] = "";
 			
 			html[setting.group] += '<li class="user" s="'+this.data[k]['searchField']+'" show="true" uid="'+this.data[k]['uId']+'">'+
-  		'<img src="'+this.data[k]['uAvatar']+'" class="avatar">'+
-  		'<span class="uName">'+this.data[k]['uName']+'</span>'+
-  		'<span class="uValue">'+this.data[k]['value']+'</span>'+
-  		'<span class="uValue">'+this.data[k]['uId']+'</span>'+
-  		'<a href="javascript:;" class="btnSet" id="userSet" style="display:none"></a>'+
+			'<a href="javasvript:;">'+
+	  		'<img src="'+this.data[k]['uAvatar']+'" class="img-rounded avatar">'+
+	  		'<span class="uName">'+this.data[k]['uName']+'</span>'+
+	  		'<span class="uValue">'+this.data[k]['value']+'</span>'+
+	  		'<button type="button" class="btn btn-info pull-right btnSet" style="display:none">备注</button>'+
+  		'</a>'+
   		'</li>';
   		
   		this.uidToUname[this.data[k]['uId']] = this.data[k]['uName'];
@@ -80,8 +81,8 @@ function HuoBanContact() {
 		for(var k in html) {
 			if(!$("#group"+k).length) {
 				var groupHtml = '<div id="group'+k+'" class="group">'+
-	  			'<div class="groupTitle"><span class="groupName">'+(groups[k] ? groups[k].name : "未分组")+'</span> <span class="groupCount">(0)</span></div>'+
-	  			'<ul style="display:none"></ul>'+
+	  			'<div class="groupTitle"><span class="groupName">'+groups[k].name+'</span> <span class="groupCount">(0)</span></div>'+
+	  			'<ul style="display:none" class="nav nav-tabs nav-stacked"></ul>'+
 	  			'</div>';
 				
 				$("#groupList").prepend(groupHtml);
@@ -122,7 +123,7 @@ function HuoBanContact() {
 		if(this.detailLayerTime) clearTimeout(this.detailLayerTime);
 		this.detailLayerTime = setTimeout(function() {
 			$("#userDetail").fadeOut(300);
-		}, 12*1000);
+		}, 10*1000);
 	}
 	
 	// 筛选查找
@@ -171,9 +172,8 @@ function HuoBanContact() {
 		html += '<tr><td class="l">QQ号码：</td><td><input type="text" id="userQQ" value="'+(this.QQNumbers[uid] || "")+'"></td></tr>';
 		html += '<tr><td class="l">备注：</td><td><input type="text" id="userRemark" value="'+(setting.remark || "")+'"></td></tr>';
 		// html += '<tr><td class="l"></td><td></td></tr>';
-		html += '<tr><td class="l"></td><td><input type="button" id="saveUserSetting" value="保存"><span id="saveInfo"></span></td></tr>';
-		html += '<table>';
-		
+		html += '<tr><td class="l"></td><td><input type="button" id="saveUserSetting" class="btn btn-primary" value="保存"><span id="saveInfo"></span></td></tr>';
+		html += '</table>';
 		this.showDetailLayer(html);
 	}
 	
@@ -186,7 +186,6 @@ function HuoBanContact() {
 		};
 		
 		setting = JSON.stringify(setting);
-		
 		LDB.set(this.settingKey+this.settingUid, setting);
 		
 		$("#saveInfo").html("保存成功!");
@@ -207,13 +206,13 @@ $(function() {
 		var uid = $(this).attr("uid");
 		HBC.getUserDetail(uid, this);
 	}).on("mouseenter", "li.user", function() {
-		$(this).find("a.btnSet").show();
+		$(this).find(".btnSet").show();
 	}).on("mouseleave", "li.user", function() {
-		$(this).find("a.btnSet").hide();
+		$(this).find(".btnSet").hide();
 	});
 	
-	$(document).on("click", "#userSet", function(e) {
-		var uid = $(this).parent("li").attr("uid");
+	$(document).on("click", ".btnSet", function(e) {
+		var uid = $(this).parents("li:eq(0)").attr("uid");
 		HBC.showUserSetting(uid);
 		e.stopPropagation();
 		return false;

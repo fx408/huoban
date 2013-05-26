@@ -1,24 +1,6 @@
 /* 全局CSS定义 */
-body,input,select,textarea,table,a,ul,li,tr,td{ font-family:"Microsoft Yahei","微软雅黑",Arial,Helvetica,sans-serif,"宋体"; font-size:12px; color:#333;}
-div,form,img,ul,ol,li,dl,dt,dd,p{margin: 0; padding: 0; border: 0;}
-h1,h2,h3,h4,h5,h6{ margin:0; padding:0;}
-
-body,div,ul,li,form,table,ol,dl,dt,dd{margin:0px;padding:0px;list-style:none;border:0px;}
-textarea {overflow:auto;}
-
-form{display:inline}
-body > div {margin:0 auto}
-body{overflow:hidden; background:url("../images/bg.gif") repeat fixed top;}
+body,input,select,textarea,table,a,ul,li,tr,td,button,p,div{ font-family:"Microsoft Yahei","微软雅黑",Arial,Helvetica,sans-serif,"宋体"; font-size:12px; color:#333;}
 .clear{clear:both; height:0px; font-size:0px; line-height:0px; overflow:hidden}
-
-table,td,tr,th{ font-size:12px;}
-
-/* 链接颜色 */
-a{color: #4183C4;}
-a:link{text-decoration:none;}
-a:visited{text-decoration:none;}
-a:hover{text-decoration:underline;}
-a:active{}
 
 /* webkit 滚动条样式*/
 ::-webkit-scrollbar { width: 10px; height:10px;}/* Track & scroll thickness */
@@ -45,59 +27,38 @@ a:active{}
 	background: rgba(231,231,231,0.4);
 }
 
-body{min-width:330px; padding:5px;}
+body{min-width:330px; padding:5px; padding-right:0px;}
+.main{max-height:450px; min-height: 240px; overflow:auto; padding-right:0px;}
+.groupList .avatar{width:32px; height:32px; float:left; margin-top:-5px;}
+.btnSet{margin-top:-4px; font-size: 12px}
+.topicList{margin-top:-21px;}
 
-.setting{text-align:right;}
-.data_time{float:right; color:#777}
+.settingInput{margin-bottom:0px;}
 
-.odd{background-color:#fafafa}
-
-.topicList ul li{ line-height:22px; height:22px;}
-.topicList ul li:hover{background-color:#FCF78F;}
 
 /*
  * 通讯录
  */
-.groupList{min-height:140px; max-height:450px; overflow:auto}
 .groupList .groupName{color:#09f; font-size:12px; font-weight:600;}
 .groupList .groupCount{margin-left:5px; color:#777}
 
 .groupTitle{line-height:24px; height:24px; cursor:pointer}
 
-li.user{line-height:32px; height:32px; margin:0 0 5px 0; cursor:pointer;}
-li.user:hover{background-color:#8FABFC;}
-
-.groupList .avatar{width:32px; height:32px; float:left}
 .uName{padding:0 5px; font-size:16px; font-weight:600}
 .groupList .uValue{color:#777}
 
 .searchLayer{height:30px; line-height:30px;}
 #userDetail{padding:5px; position:fixed; background-color:#fff; 
-	top:32px; width:308px; text-align:center; margin-left:-2px;
+	top:5px; width:308px; text-align:center; margin-left:-2px;
 	border:0px solid #ccc;
 	border-radius:3px; 
-	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.7);
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
-#userDetail:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.2);}
+#userDetail:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.3);}
 
 #userDetail .contents div{width:100%; text-align:left; line-height:20px;}
 #userDetail .operator{border-top: 1px solid #ddd; margin-top:2px;}
 
-a.btnSet {
-	float: right;
-	z-index: 999;
-	overflow: hidden;
-	text-indent: -999px;
-	display: block;
-	width: 26px;
-	height: 26px;
-	background: url(../images/icon_set.png) no-repeat 0 0;
-	border-radius:2px;
-}
-#userSet{margin-top:3px; margin-right:3px;}
-
-a.btnSet:hover{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.6); background-position: 0 -26px; background-color:#fff}
-a.btnSet:active{-webkit-box-shadow: 0 0 5px rgba(0,0,0,0.4); background-color:#f0f0f0}
 
 /*分组设置*/
 table.group{width:100%; text-align:center;}

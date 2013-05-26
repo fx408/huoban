@@ -79,40 +79,28 @@ function HuoBan() {
   
   // 显示列表
 	this.show = function() {
-  	console.log(this.list);
-  	
-  	var newTopic = document.getElementById("newTopic"),
-  		notRead = document.getElementById("notRead"),
-  		count = {0:0, 1:1},
-  		a, li, suffix, topic;
+  	var a, suffix, topic, tr, newTopic = '', notRead = '', titleLen = 16;
   	
   	for(var k in this.list.topics) {
   		topic = this.list.topics[k];
   		if(!topic.tId) break;
   		
-  		suffix = topic.tSubject.length > 20 ? '...' : '';
+  		suffix = topic.tSubject.length > titleLen ? '...' : '';
   		
   		a = this.createElement("a", {
   			href: "http://www.huoban.com/#/topic/viewForStarredProjects?tId="+topic.tId,
   			title: topic.tSubject,
-  			innerHTML: topic.tSubject.substring(0, 20)+suffix,
+  			innerHTML: topic.tSubject.substring(0, titleLen)+suffix,
   			target: "_blank"
   		});
-  		li = this.createElement("li", {innerHTML: '&nbsp; &nbsp;'+a.outerHTML+' &nbsp; <span class="data_time">'+topic.tPublished.substring(5,16)+'</span>&nbsp;'});
+  		tr = '<tr><td>'+a.outerHTML+'</td><td>'+topic.tPublished.substring(5,16)+'</td></tr>';
   		
-  		if(count[0] < 10) {
-	  		newTopic.appendChild(li);
-	  		count[0]++;
-	  	}
-
-  		if(topic.isRead == false && count[1] < 10) {
-  			notRead.appendChild(li);
-  			count[1]++;
-  		}
+	  	newTopic += tr;
+  		if(topic.isRead == false) notRead += tr;
   	}
   	
-  	$("#newTopic li:odd").addClass("odd");
-  	$("#notRead li:odd").addClass("odd");
+  	$("#newTopic").html(newTopic);
+  	$("#notRead").html(notRead);
   }
   
   this.createElement = function(eleName, options) {

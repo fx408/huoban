@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
+  	<meta charset="utf-8">
     <title>HuoBan</title>
-		<link href="/css/app.css" rel="stylesheet">
-		
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
+    
+		<script type="text/javascript" src="/js/header.js"></script>
     <script type="text/javascript" src="/js/huoban.js"></script>
     <script type="text/javascript" src="/js/huoban.init.js"></script>
   </head>
   <body>
-  	<div class="topicList">
-  		<h3>未读主题</h3>
-  		<ul id="notRead">
-  			
-  		</ul>
-  	</div>
-  	
-  	<div class="topicList">
-  		<h3>最新主题</h3>
-  		<ul id="newTopic">
-  			
-  		</ul>
-  	</div>
-  	
-  	<div class="setting">
-  		<hr>
-  		<a href="/pages/contact.html">通讯录</a> | 
-  		<a href="/pages/setting.html">设置</a>
-  	</div>
+		<script type="text/javascript" src="/js/nav.js"></script>
+	  <div class="main">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#tab_not" data-toggle="tab">未读主题</a></li>
+				  <li><a href="#tab_new" data-toggle="tab">最新主题</a></li>
+				</ul>
+				
+				<div class="tab-content topicList">
+			    <div class="tab-pane active" id="tab_not">
+			      <table class="table table-hover" id="notRead">
+	  				</table>
+			    </div>
+			    <div class="tab-pane" id="tab_new">
+			      <table class="table table-hover" id="newTopic">
+	  				</table>
+			    </div>
+			  </div>
+			</div>
+	  </div>
+	  
+	  <script type="text/javascript" src="/js/footer.js"></script>
   </body>
 </html>
 

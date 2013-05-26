@@ -1,35 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
-    <title>contact</title>
-		<link href="/css/app.css" rel="stylesheet">
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
+  	<meta charset="utf-8">
+    <title>HuoBan</title>
+    
+    <script type="text/javascript" src="/js/header.js"></script>
   </head>
   <body>
-  	<div class="searchLayer">
-  		<a href="/pages/popup.html">返回主题</a>
-			查询：<input type="text" value="" name="search" id="search">
-			
-			<a href="/pages/group.html" class="btnSet" id="config"></a>
+  	<script type="text/javascript" src="/js/nav.js"></script>
+  	<div class="main">
+	  	<form class="navbar-form">
+				&nbsp; <input type="text" value="" placeholder="Search..." id="search">
+			</form>
+	  	
+	  	<div id="groupList" class="groupList">
+	  		
+	  	</div>
+	  	
+	  	<div id="userDetail" style="display:none">
+	  		<div class="contents">
+	  			<img src="/images/loading.gif">
+	  		</div>
+	  		<div class="operator">
+	  			<a href="javascript:" id="closeDetail">关闭</a>
+	  		</div>
+	  	</div>
+	  	
   	</div>
-  	
-  	<div id="groupList" class="groupList">
-  		
-  	</div>
-  	
-  	<div id="userDetail" style="display:none">
-  		<div class="contents">
-  			<img src="/images/loading.gif">
-  		</div>
-  		<div class="operator">
-  			<a href="javascript:" id="closeDetail">关闭</a>
-  		</div>
-  	</div>
-  	
-  	<script type="text/javascript" src="/js/localStorage.js"></script>
   	<script type="text/javascript" src="/js/huoban.js"></script>
   	<script type="text/javascript" src="/js/qq_numbers.js"></script>
   	<script type="text/javascript" src="/js/contact.js"></script>
+  	
+  	 <script type="text/javascript" src="/js/footer.js"></script>
   </body>
 </html>
 

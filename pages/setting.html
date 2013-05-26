@@ -2,35 +2,74 @@
 <html>
   <head>
     <title>Setting</title>
-		<link href="/css/app.css" rel="stylesheet">
-		<script type="text/javascript" src="/js/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="/js/header.js"></script>
   </head>
   <body>
-  	<div>
-  		<table id="setting">
-  			<tr>
-  				<td>自动检测：</td>
-  				<td>
-  					<input type="radio" name="autoCheck" value="1" checked="checked">开&nbsp;&nbsp;
-  					<input type="radio" name="autoCheck" value="0">关
-  				</td>
-  				<td></td>
-  			</tr>
-  			
-  			<tr class="frequency">
-  				<td>检测频率：</td>
-  				<td><input type="text" value="600" name="frequency">(秒/s)</td>
-  				<td>10-1000之间</td>
-  			</tr>
-  			
-  		</table>
+  	<script type="text/javascript" src="/js/nav.js"></script>
+  	<div class="main">
+  		<div class="tabbable">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#tab_env" data-toggle="tab">全局设置</a></li>
+				  <li><a href="#tab_group" data-toggle="tab">分组设置</a></li>
+				</ul>
+				
+				<div class="tab-content topicList">
+			    <div class="tab-pane active" id="tab_env">
+			      <table id="setting" class="table table-hover">
+			  			<tr>
+			  				<td>
+			  					<div class="input-prepend settingInput">
+									  <span class="add-on" style="margin-right:10px;">自动检测</span>
+									  <label class="radio inline">
+				              <input type="radio" name="autoCheck" value="1" checked="checked">
+				              开
+				            </label>
+				            <label class="radio inline">
+				              <input type="radio" name="autoCheck" value="0">
+				              关
+				            </label>
+									</div>
+			  				</td>
+			  				<td></td>
+			  			</tr>
+			  			<tr>
+			  				<td>
+			  					<div class="input-prepend settingInput">
+										<span class="add-on">检测频率</span>
+										<input class="span2" id="prependedInput" name="frequency" value="600" type="text" placeholder="">
+									</div>
+								</td>
+			  				<td>100-1500(秒/s)</td>
+			  			</tr>
+			  		</table>
+			    </div>
+			    
+			    <div class="tab-pane" id="tab_group">
+			      <table class="table table-hover">
+			  			<thead>
+			  				<tr>
+			  					<th>分组</th>
+			  					<th>操作</th>
+			  				</tr>
+			  			</thead>
+			  			<tbody id="groupList">
+			  				
+			  			</tbody>
+			  		</table>
+			  		
+			  		<div class="input-append">
+							<input class="span2" id="groupName" type="text" placeholder="请输入组名称">
+							<button class="btn" type="button" id="addGroup">添加</button>
+						</div>
+			    </div>
+			  </div>
+			</div>
+  		
+  		<script type="text/javascript" src="/js/footer.js"></script>
   	</div>
-  	
-  	<div>
-  		<a href="/pages/popup.html">返回</a>
-  	</div>
-  	<script type="text/javascript" src="/js/localStorage.js"></script>
   	<script type="text/javascript" src="/js/setting.js"></script>
+  	<script type="text/javascript" src="/js/group.js"></script>
   </body>
 </html>
 

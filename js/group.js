@@ -12,9 +12,11 @@ function ContactGroup() {
 		
 		for(var k in this.list) {
 			html += '<tr  gid="'+k+'">'+
-  			'<td>'+k+'</td>'+
-  			'<td><input type="text" value="'+this.list[k].name+'" class="inputGroupName"></td>'+
-  			'<td><a href="javascript:;" class="del">删除</a></td>'+
+				'<td><div class="input-prepend settingInput">'+
+					'<span class="add-on">'+k+'</span>'+
+					'<input class="span2 inputGroupName" value="'+this.list[k].name+'" type="text" placeholder="">'+
+				'</div></td>'+
+  			'<td style="vertical-align: inherit;"><a href="javascript:;" class="del">删除</a></td>'+
   			'</tr>';
 			
 			this.lastId = k;
