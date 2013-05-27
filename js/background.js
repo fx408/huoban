@@ -128,13 +128,18 @@ var HB = new HuobanBackground();
 
 huoban.isBackground = true;
 
+var isRun = false;
 function initHandle () {
 	console.log(arguments);
-	HB.run();
+	if(!isRun) {
+		console.log("App running!");
+		isRun = true;
+		HB.run();
+	}
 }
 function alarmHandle(alarm) {
 	console.log(arguments);
-	HB.run();
+	initHandle();
 }
 
 chrome.runtime.onInstalled.addListener(initHandle);
