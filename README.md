@@ -1,6 +1,5 @@
-## <a href="http://www.huoban.com/" target="_blank">»ï°é</a> chrome ²å¼þ
+## <a href="http://www.huoban.com/" target="_blank">ä¼™ä¼´</a>chromeæ’ä»¶
 
-## °æ±¾
-#### V1.0 
-* ±êÐÇÖ÷ÌâÎ´¶ÁÌáÐÑ ¼° ×îÐÂÖ÷ÌâÁÐ±í
-* ¿ìËÙ²é¿´»ï°éÍ¨Ñ¶Â¼
+#### ç‰ˆæœ¬ V1.0 
+* æ ‡æ˜Ÿä¸»é¢˜æœªè¯»æé†’ åŠ æœ€æ–°ä¸»é¢˜åˆ—è¡¨
+* å¿«é€ŸæŸ¥çœ‹ä¼™ä¼´é€šè®¯å½•
