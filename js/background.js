@@ -4,6 +4,8 @@ function HuobanBackground() {
 		testTimes = 0, // 繁忙尝试次数
 		maxTestTime = 15; // 最大繁忙尝试次数
 	
+	this.maxFrequency = 1500;
+	this.minFrequency = 100;
 	this.defaults = {
 		frequency: 600,
 		time: 10
@@ -50,10 +52,12 @@ function HuobanBackground() {
 		testTimes++;
 	}
 	
+	this.timeOutCache = {};
 	this._setTimeout = function(func, time) {
 		var _this = this;
-
-		setTimeout(function() {
+		
+		if(this.timeOutCache[func]) clearTimeout(this.timeOutCache[func]);
+		this.timeOutCache[func] = setTimeout(function() {
 			_this[func]();
 		}, time*1000);
 	}
@@ -70,7 +74,7 @@ function HuobanBackground() {
 		
 		var frequency = LDB.item("frequency");
 		if(frequency === null) frequency = this.defaults.frequency;
-		frequency = Math.max(10, Math.min(parseInt(frequency), 1000));
+		frequency = Math.max(this.minFrequency, Math.min(parseInt(frequency), this.maxFrequency));
 		
 		showLoadingAnimation = false;
 		this._setTimeout("run", frequency);
@@ -124,7 +128,7 @@ var HB = new HuobanBackground();
 
 huoban.isBackground = true;
 
-function installedHandle () {
+function initHandle () {
 	console.log(arguments);
 	HB.run();
 }
@@ -133,5 +137,7 @@ function alarmHandle(alarm) {
 	HB.run();
 }
 
-chrome.runtime.onInstalled.addListener(installedHandle);
+chrome.runtime.onInstalled.addListener(initHandle);
 chrome.alarms.onAlarm.addListener(alarmHandle);
+chrome.windows.onCreated.addListener(initHandle);
+//chrome.webNavigation.onDOMContentLoaded.addListener(initHandle);
