@@ -10,7 +10,7 @@ function Topic() {
 			
 			a = this.createElement("a", {
 				href: "http://www.huoban.com/#/topic/viewForStarredProjects?tId="+topic.tId,
-				title: topic.tSubject,
+				title: topic.tSubject+', '+topic.teSummary,
 				innerHTML: topic.tSubject.substring(0, titleLen)+suffix,
 				target: "_blank"
 			});
