@@ -12,23 +12,20 @@ function HuoBanContact() {
 		var _this = this;
 		this.QQNumbers = QQNumbers;
 		
-		huoban.request(
-			this.url,
-			{
-				isString: true,
-				callback: function(err, data) {
-					if(false != err) return false;
-					
-					var data = data.replace("try { HB.jsonp.callback('user.listCompanyAllUsers', ", "").replace(");} catch (e) {};", "");
-					data = JSON.parse(data);
-					
-					if(data && data.header && data.header.errCode == 0) {
-						_this.data = data.body;
-						_this.show();
-					}
+		huoban.request(this.url, {
+			isString: true,
+			callback: function(err, data) {
+				if(false != err) return false;
+				
+				var data = data.replace("try { HB.jsonp.callback('user.listCompanyAllUsers', ", "").replace(");} catch (e) {};", "");
+				data = JSON.parse(data);
+				
+				if(data && data.header && data.header.errCode == 0) {
+					_this.data = data.body;
+					_this.show();
 				}
 			}
-		);
+		});
 	}
 	
 	// 或取 指定用户的详细信息
@@ -36,23 +33,20 @@ function HuoBanContact() {
 		var _this = this;
 		
 		this.showDetailLayer('<img src="/images/loading.gif">');
-		huoban.request(
-			ajaxUrl,
-			{
-				isPost: true,
-				callback: function(err, data) {
-					if(err == false) {
-						_this.showUserDetail(data);
-					}
-				},
-				data: {
-					'data[0][header][method]': 'user.getContactDetail',
-					'data[0][header][uri]': 'http://www.huoban.com/#/contact',
-					'data[0][body][uId]': uid
-				},
-				useCookie: true
-			}
-		);
+		huoban.request(ajaxUrl, {
+			isPost: true,
+			callback: function(err, data) {
+				if(err == false) {
+					_this.showUserDetail(data);
+				}
+			},
+			data: {
+				'data[0][header][method]': 'user.getContactDetail',
+				'data[0][header][uri]': 'http://www.huoban.com/#/contact',
+				'data[0][body][uId]': uid
+			},
+			useCookie: true
+		});
 	}
 	
 	// 显示列表
