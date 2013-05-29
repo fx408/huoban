@@ -2,7 +2,14 @@ function HuobanBackground() {
 	var showLoadingAnimation,
 		busy = false,
 		testTimes = 0, // 繁忙尝试次数
-		maxTestTime = 15; // 最大繁忙尝试次数
+		maxTestTime = 15, // 最大繁忙尝试次数
+		starData = {
+			'data[0][header][method]': 'markproject.listTopics',
+			'data[0][header][uri]': 'http://www.huoban.com/#/starredProjects/view',
+			'data[0][body][order][field]': 'tSorted',
+			'data[0][body][order][type]': 'DESC',
+			'data[0][body][nextPageSorted]': ''
+		};
 	
 	this.maxFrequency = 1500;
 	this.minFrequency = 100;
@@ -19,14 +26,12 @@ function HuobanBackground() {
 		huoban.notReadCount = 0;
 		
 		var params = {
-			callback: function() {
-				if(showLoadingAnimation) LA.stop();
-				var c = "0";
+			callback: function(err, data) {
+				if(false != err) return false;
 				
-				if(huoban.error == false) {
-					huoban.count();
-					c = huoban.notReadCount ? (huoban.notReadCount > 10 ? '10+' : huoban.notReadCount.toString()) : "0";
-				}
+				if(showLoadingAnimation) LA.stop();
+				var c = count(data);
+				c = c ? (c > 10 ? '10+' : c.toString()) : "0";
 				
 				chrome.browserAction.setIcon({path: "/images/icon.png"});
 				chrome.browserAction.setBadgeBackgroundColor({color:[208, 0, 24, 255]});
@@ -35,11 +40,23 @@ function HuobanBackground() {
 				busy = false;
 			},
 			isPost: true,
-			data: markData,
+			data: starData,
 			useCookie: false
 		};
 		
 		huoban.request(ajaxUrl, params);
+	}
+	
+	function count(data) {
+		var notReadCount = 0;
+		
+  	for(var k in data.topics) {
+  		if(data.topics[k].isRead == false) {
+  			notReadCount++;
+  		}
+  	}
+  	
+  	return notReadCount;
 	}
 	
 	// 计算尝试次数

@@ -16,8 +16,10 @@ function HuoBanContact() {
 			this.url,
 			{
 				isString: true,
-				callback: function() {
-					var data = huoban.list.replace("try { HB.jsonp.callback('user.listCompanyAllUsers', ", "").replace(");} catch (e) {};", "");
+				callback: function(err, data) {
+					if(false != err) return false;
+					
+					var data = data.replace("try { HB.jsonp.callback('user.listCompanyAllUsers', ", "").replace(");} catch (e) {};", "");
 					data = JSON.parse(data);
 					
 					if(data && data.header && data.header.errCode == 0) {
@@ -38,9 +40,9 @@ function HuoBanContact() {
 			ajaxUrl,
 			{
 				isPost: true,
-				callback: function() {
-					if(huoban.error == false) {
-						_this.showUserDetail(huoban.list);
+				callback: function(err, data) {
+					if(err == false) {
+						_this.showUserDetail(data);
 					}
 				},
 				data: {
