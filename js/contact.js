@@ -64,7 +64,7 @@ function HuoBanContact() {
 			if(!html[setting.group]) html[setting.group] = "";
 			
 			html[setting.group] += '<li class="user" s="'+this.data[k]['searchField']+'" show="true" uid="'+this.data[k]['uId']+'">'+
-			'<a href="javasvript:;">'+
+			'<a href="###">'+
 	  		'<img src="'+this.data[k]['uAvatar']+'" class="img-rounded avatar">'+
 	  		'<span class="uName">'+this.data[k]['uName']+'</span>'+
 	  		'<span class="uValue">'+this.data[k]['value']+'</span>'+
