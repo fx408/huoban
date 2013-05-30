@@ -1,6 +1,6 @@
-var footer = '<div class="navbar" style="margin: 0px 5px 5px 0px;"><div class="navbar-inner">'+
+var footer = '<div class="navbar" style="margin: 5px;"><div class="navbar-inner">'+
 	'<ul class="nav">'+
-		'<li><a href="/pages/popup.html">主题</a></li>'+
+		'<li class="active"><a href="/pages/topic.html">主题</a></li>'+
 		'<li class="divider-vertical"></li>'+
 		'<li><a href="/pages/contact.html">通讯录</a></li>'+
 		'<li class="divider-vertical"></li>'+
@@ -10,7 +10,15 @@ var footer = '<div class="navbar" style="margin: 0px 5px 5px 0px;"><div class="n
 document.write(footer);
 
 $(function() {
-	var _href = window.location.href.replace(/.*?\/pages\/(.*?)\.html$/, "/pages/$1.html");
-	$(".navbar a[href='"+_href+"']").parent("li").removeClass().addClass("active");
+	//var _href = window.location.href.replace(/.*?\/pages\/(.*?)\.html$/, "/pages/$1.html");
+	//$(".navbar a[href='"+_href+"']").parent("li").removeClass().addClass("active");
+	
+	$(".navbar .nav a").click(function() {
+		var p = $(this).parent();
+		$("li.active").removeClass();
+		p.removeClass().addClass("active");
+		$("#mainIframe iframe").attr("src", $(this).attr("href"));
+		return false;
+	});
 });
 

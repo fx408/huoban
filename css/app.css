@@ -27,8 +27,8 @@ body,input,select,textarea,table,a,ul,li,tr,td,button,p,div{ font-family:"Micros
 	background: rgba(231,231,231,0.4);
 }
 
-body{min-width:330px; padding:5px; padding-right:0px;}
-.main{max-height:450px; min-height: 240px; overflow:auto; padding-right:0px;}
+body{width:330px; padding:5px; padding-right:0px;}
+.main{min-height: 240px; overflow:auto; padding-right:0px;}
 .groupList .avatar{width:32px; height:32px; float:left; margin-top:-5px;}
 .btnSet{margin-top:-4px; font-size: 12px}
 .topicList{margin-top:-21px;}
