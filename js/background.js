@@ -143,11 +143,11 @@ function LoadingAnimation() {
 var LA = new LoadingAnimation();
 var HB = new HuobanBackground();
 
-huoban.isBackground = true;
-
 var isRun = false;
 function initHandle () {
+	console.log("initHandle");
 	console.log(arguments);
+	console.log("isRun: "+isRun);
 	if(!isRun) {
 		console.log("App running!");
 		isRun = true;
@@ -155,11 +155,10 @@ function initHandle () {
 	}
 }
 function alarmHandle(alarm) {
-	console.log(arguments);
 	initHandle();
 }
 
 chrome.runtime.onInstalled.addListener(initHandle);
 chrome.alarms.onAlarm.addListener(alarmHandle);
 chrome.windows.onCreated.addListener(initHandle);
-//chrome.webNavigation.onDOMContentLoaded.addListener(initHandle);
+chrome.webNavigation.onDOMContentLoaded.addListener(initHandle);
