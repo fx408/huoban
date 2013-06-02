@@ -80,9 +80,10 @@ var broadcast = function() {
 			.replace('<', '&gt;')
 			.replace('>', '&lt;');
 		
-		var msg = {uid:parseInt(socket.userId), content:data.content},
+		var date = new Date(),
+			msg = {uid:parseInt(socket.userId), content:data.content},
 			_this = this,
-			sql = "INSERT INTO message (`id`, `uid`, `content`) VALUES (NULL, "+msg.uid+", '"+msg.content+"')";
+			sql = "INSERT INTO message (`id`, `uid`, `content`, `timeline`) VALUES (NULL, "+msg.uid+", '"+msg.content+"', '"+date.toLocaleTimeString()+"')";
 		
 		mysqlClient.query(sql, function() {
 			console.log("---> insert");
@@ -122,7 +123,7 @@ var broadcast = function() {
 		count = this.msgPraiseCount[defaults.id] || {};
 		defaults.yes = count[this.redisKeys.msgCountY+defaults.id] || 0;
 		defaults.no = count[this.redisKeys.msgCountN+defaults.id] || 0;
-		defaults.time = date.toLocaleTimeString();
+		defaults.time = defaults.time || date.toLocaleTimeString();
 		return defaults;
 	}
 	
