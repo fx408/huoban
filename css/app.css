@@ -36,6 +36,11 @@ body{width:330px; padding:5px; padding-right:0px;}
 .settingInput{margin-bottom:0px;}
 .table td.va-inherit{vertical-align: inherit;}
 
+#searchTopic{min-height:300px;}
+#searchTopic .input-append{margin-top:10px;}
+#searchTopic .searchTopicText{width:160px;}
+#searchTopic .dropdown-menu{width:150px; min-width:150px; max-height:200px; overflow:auto}
+
 /*
  * 通讯录
  */
