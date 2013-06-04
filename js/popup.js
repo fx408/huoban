@@ -39,6 +39,10 @@ $(function() {
 	function starCallback(err, data) {
 		if(false != err) return false;
 		
+		var backWin = chrome.extension.getBackgroundPage(),
+			c = backWin.HB.count(data);
+		backWin.HB.updateIcon(c);
+		
 		var html = topic.createHtml(data, true);
 		$("#newTopic table").html(html[0]);
 		$("#notRead table").html(html[1]);

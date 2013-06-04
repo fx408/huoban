@@ -9,7 +9,8 @@ function HuobanBackground() {
 			'data[0][body][order][field]': 'tSorted',
 			'data[0][body][order][type]': 'DESC',
 			'data[0][body][nextPageSorted]': ''
-		};
+		},
+		_this = this;
 	
 	this.maxFrequency = 1500;
 	this.minFrequency = 100;
@@ -18,25 +19,22 @@ function HuobanBackground() {
 		time: 10
 	};
 	
+	// 请求数据
 	function request() {
 		if(busy) return false;
 		busy = true;
 		
 		if(showLoadingAnimation) LA.start();
-		huoban.notReadCount = 0;
 		
 		var params = {
 			callback: function(err, data) {
 				if(false != err) return false;
 				
 				if(showLoadingAnimation) LA.stop();
-				var c = count(data);
+				var c = _this.count(data);
 				c = c ? (c > 10 ? '10+' : c.toString()) : "0";
 				
-				chrome.browserAction.setIcon({path: "/images/icon.png"});
-				chrome.browserAction.setBadgeBackgroundColor({color:[208, 0, 24, 255]});
-				chrome.browserAction.setBadgeText({text: c});
-				
+				_this.updateIcon(c);
 				busy = false;
 			},
 			isPost: true,
@@ -47,15 +45,14 @@ function HuobanBackground() {
 		huoban.request(ajaxUrl, params);
 	}
 	
-	function count(data) {
+	// 计算未读话题数量
+	this.count = function(data) {
 		var notReadCount = 0;
-		
   	for(var k in data.topics) {
   		if(data.topics[k].isRead == false) {
   			notReadCount++;
   		}
   	}
-  	
   	return notReadCount;
 	}
 	
@@ -67,6 +64,15 @@ function HuobanBackground() {
 			return false;
 		}
 		testTimes++;
+	}
+	
+	// 更新图标,显示未读话题数量
+	this.updateIcon = function(string) {
+		string = string.toString();
+		
+		chrome.browserAction.setIcon({path: "/images/icon.png"});
+		chrome.browserAction.setBadgeBackgroundColor({color:[208, 0, 24, 255]});
+		chrome.browserAction.setBadgeText({text: string});
 	}
 	
 	this.timeOutCache = {};
