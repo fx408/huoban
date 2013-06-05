@@ -1,6 +1,6 @@
 var footer = '<div class="navbar" style="margin: 5px;"><div class="navbar-inner">'+
 	'<ul class="nav">'+
-		'<li class="active"><a href="/pages/topic.html">主题</a></li>'+
+		'<li class="active"><a href="/pages/topic.html">话题</a></li>'+
 		'<li class="divider-vertical"></li>'+
 		'<li><a href="/pages/contact.html">通讯录</a></li>'+
 		'<li class="divider-vertical"></li>'+

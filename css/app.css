@@ -41,6 +41,9 @@ body{width:330px; padding:5px; padding-right:0px;}
 #searchTopic .searchTopicText{width:160px;}
 #searchTopic .dropdown-menu{width:150px; min-width:150px; max-height:200px; overflow:auto}
 
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover{cursor:pointer; color:#075CDB}
+
+
 /*
  * 通讯录
  */
