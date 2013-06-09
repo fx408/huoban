@@ -31,25 +31,32 @@ function HuobanBackground() {
 				if(false != err) return false;
 				
 				if(showLoadingAnimation) LA.stop();
-				var c = _this.count(data);
+				var c = _this.count(data, true);
 				c = c ? (c > 10 ? '10+' : c.toString()) : "0";
 				
 				_this.updateIcon(c);
 				busy = false;
 			},
 			isPost: true,
-			data: starData,
-			useCookie: false
+			data: starData
 		};
 		
 		huoban.request(ajaxUrl, params);
 	}
 	
 	// 计算未读话题数量
-	this.count = function(data) {
+	this.count = function(data, showNoti) {
 		var notReadCount = 0;
   	for(var k in data.topics) {
   		if(data.topics[k].isRead == false) {
+  			
+  			// 只检查第一条未读提示
+  			if(showNoti && notReadCount == 0 && this.notification == null) {
+  				this.showNotification(data.topics[k].tId, {
+  					title: data.topics[k].tSubject,
+  					content: data.topics[k].teSummary+"  "+data.topics[k].tPublished
+  				});
+  			}
   			notReadCount++;
   		}
   	}
@@ -73,6 +80,39 @@ function HuobanBackground() {
 		chrome.browserAction.setIcon({path: "/images/icon.png"});
 		chrome.browserAction.setBadgeBackgroundColor({color:[208, 0, 24, 255]});
 		chrome.browserAction.setBadgeText({text: string});
+	}
+	
+	// 桌面消息通知
+	this.notification = null;
+	this.showNotification = function(tid, data) {
+		if(LDB.item("desktopNotify") != 1 || !tid) return false;
+		var notifyHistory = LDB.item("notifyHistory") || {};
+		if(notifyHistory[tid]) return false;
+		notifyHistory[tid] = 1;
+		LDB.set("notifyHistory", JSON.stringify(notifyHistory));
+		
+		data = data || {};
+		data.title = data.title || "消息提示";
+		data.content = data.content || "消息提示";
+		data.icon = data.icon || '/images/icon.png';
+		
+		if(window.webkitNotifications && this.notification==null) {
+			this.notification = window.webkitNotifications.createNotification(data.icon, data.title, data.content);
+			this.notification.onclick = function() {
+				//window.open("http://www.huoban.com");
+			}
+			
+		  this.notification.show();
+		  var closeTime = Math.abs( parseInt(LDB.item("notifyCloseTime")) );
+		  if(closeTime) {
+		  	closeTime = Math.min(100, Math.max(closeTime, 3));
+		  	
+			  setTimeout(function() {
+			  	_this.notification.close();
+			  	_this.notification=null;
+			  }, closeTime*1000);
+			}
+		}
 	}
 	
 	this.timeOutCache = {};
@@ -150,6 +190,8 @@ var LA = new LoadingAnimation();
 var HB = new HuobanBackground();
 
 var isRun = false;
+var notification=null;
+
 function initHandle () {
 	console.log("initHandle");
 	console.log(arguments);

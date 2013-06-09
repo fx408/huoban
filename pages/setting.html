@@ -37,10 +37,35 @@
 			  				<td>
 			  					<div class="input-prepend settingInput">
 										<span class="add-on">检测频率</span>
-										<input class="span2" id="prependedInput" name="frequency" value="600" type="text" placeholder="">
+										<input class="input-small" id="prependedInput" name="frequency" value="600" type="text" placeholder="">
 									</div>
 								</td>
 			  				<td class="va-inherit">100-1500(秒/s)</td>
+			  			</tr>
+			  			<tr>
+			  				<td>
+			  					<div class="input-prepend settingInput">
+										<span class="add-on" style="margin-right:10px;">桌面通知</span>
+										<label class="radio inline">
+				              <input type="radio" name="desktopNotify" value="1" checked="checked">
+				              开
+				            </label>
+				            <label class="radio inline">
+				              <input type="radio" name="desktopNotify" value="0">
+				              关
+				            </label>
+									</div>
+								</td>
+			  				<td class="va-inherit"></td>
+			  			</tr>
+			  			<tr>
+			  				<td>
+			  					<div class="input-prepend settingInput">
+										<span class="add-on">关闭时间</span>
+										<input class="input-small" name="notifyCloseTime" value="600" type="text" placeholder="">
+									</div>
+								</td>
+			  				<td class="va-inherit">0表示不自动关闭(秒/s)</td>
 			  			</tr>
 			  		</table>
 			    </div>
