@@ -43,7 +43,6 @@ body{width:330px; padding:5px; padding-right:0px;}
 
 .nav-tabs > .active > a, .nav-tabs > .active > a:hover{cursor:pointer; color:#075CDB}
 
-
 /*
  * 通讯录
  */
@@ -67,6 +66,8 @@ body{width:330px; padding:5px; padding-right:0px;}
 #userDetail .contents div{width:100%; text-align:left; line-height:20px;}
 #userDetail .operator{border-top: 1px solid #ddd; margin-top:2px;}
 
+#closeDetail{position:absolute; top:5px; right:5px;}
+#closeDetail .icon-remove-sign{cursor:pointer;}
 
 /*分组设置*/
 table.group{width:100%; text-align:center;}
