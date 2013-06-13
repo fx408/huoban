@@ -1,5 +1,5 @@
 /* 全局CSS定义 */
-body,input,select,textarea,table,a,ul,li,tr,td,button,p,div{ font-family:"Microsoft Yahei","微软雅黑",Arial,Helvetica,sans-serif,"宋体"; font-size:12px; color:#333;}
+body,input,select,textarea,table,a,ul,li,tr,td,button,p,div,label{ font-family:"Microsoft Yahei","微软雅黑",Arial,Helvetica,sans-serif,"宋体"; font-size:12px; color:#333;}
 .clear{clear:both; height:0px; font-size:0px; line-height:0px; overflow:hidden}
 
 /* webkit 滚动条样式*/
