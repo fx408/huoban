@@ -1,23 +1,22 @@
 {
-	"background": {
-    "persistent": false,
-    "page": "pages/background.html"
-  },
-  
   "manifest_version": 2,
+  "update_url": "https://clients2.google.com/service/update2/crx",
   "icons": { "128": "images/icon-128.png", "16": "images/icon-16.png" },
-  "name": "huoban",
-  "description": "This extension demonstrates a browser action with kittens.",
+  "name": "huoban.com",
+  "description": "huoban.com",
   "version": "1.0",
 
   "permissions": [
-  	"cookies",
   	"notifications",
   	"alarms",
     "tabs",
     "webNavigation",
     "*://*.huoban.com/"
   ],
+  "background": {
+    "persistent": false,
+    "page": "pages/background.html"
+  },
   "browser_action": {
     "default_icon": "images/icon.png",
     "default_popup": "pages/index.html"
