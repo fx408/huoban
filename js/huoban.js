@@ -9,8 +9,6 @@ function HuoBan() {
 	this.domain = '.huoban.com';
 	this.list = {};
 	
-	this.cookieCache = '';
-	
 	// 表单数据
   this.formData = function(data) {
   	var fd = new FormData();
@@ -18,20 +16,6 @@ function HuoBan() {
   		fd.append(k, data[k]);
   	}
   	return fd;
-  }
-  
-  // 读取cookies
-  this.cookies = function() {
-  	var _this = this;
-  	
-  	chrome.cookies.getAll({'domain': this.domain}, function(cookies) {
-  		var cookieString = '';
-  		for(var k in cookies) {
-  			cookieString += cookies[k].name+"="+cookies[k].value+"; ";
-  		}
-  		_this.cookieCache = cookieString;
-  	});
-  	return this.cookieCache;
   }
   
   // 请求数据
@@ -79,4 +63,3 @@ function HuoBan() {
 }
 
 var huoban = new HuoBan();
-huoban.cookies();
