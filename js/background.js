@@ -94,7 +94,7 @@ function HuobanBackground() {
 		data = data || {};
 		data.title = data.title || "消息提示";
 		data.content = data.content || "消息提示";
-		data.icon = 'https://raw.github.com/fx408/huoban/master/images/icon.png';
+		data.icon = 'http://www.findlark.com/static/icons/icon.png';
 		
 		if(window.webkitNotifications && this.notification==null) {
 			this.notification = window.webkitNotifications.createNotification(data.icon, data.title, data.content);
