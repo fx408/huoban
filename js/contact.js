@@ -44,8 +44,7 @@ function HuoBanContact() {
 				'data[0][header][method]': 'user.getContactDetail',
 				'data[0][header][uri]': 'http://www.huoban.com/#/contact',
 				'data[0][body][uId]': uid
-			},
-			useCookie: true
+			}
 		});
 	}
 	

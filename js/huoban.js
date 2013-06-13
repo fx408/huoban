@@ -51,7 +51,6 @@ function HuoBan() {
     	console.log(arguments);
     };
     
-    // if(params.useCookie) req.setRequestHeader('Cookie', this.cookies());
     req.send(this.formData(data));
   }
 

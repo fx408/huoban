@@ -200,7 +200,6 @@ $(function() {
 	huoban.request(ajaxUrl, {
 		data: starData,
 		isPost: true,
-		useCookie:true,
 		callback: starCallback,
 	});
 	
@@ -208,7 +207,6 @@ $(function() {
 		huoban.request(ajaxUrl, {
 			data: favoriteData,
 			isPost: true,
-			useCookie:true,
 			callback: favoriteCallback,
 		});
 	});
