@@ -8,7 +8,7 @@ $(function() {
 		switch(t) {
 			case "radio":
 				$(this).removeAttr("checked");
-				$("#setting input[name="+k+"][value="+v+"]").click();
+				$("#setting input[name="+k+"][value="+v+"]")[0].checked = true;
 				break;
 			case "textarea":
 			case "text":

@@ -1,6 +1,5 @@
 function HuobanBackground() {
-	var showLoadingAnimation,
-		busy = false,
+	var busy = false,
 		testTimes = 0, // 繁忙尝试次数
 		maxTestTime = 15, // 最大繁忙尝试次数
 		starData = {
@@ -24,13 +23,10 @@ function HuobanBackground() {
 		if(busy) return false;
 		busy = true;
 		
-		if(showLoadingAnimation) LA.start();
-		
 		var params = {
 			callback: function(err, data) {
 				if(false != err) return false;
 				
-				if(showLoadingAnimation) LA.stop();
 				var c = _this.count(data, true);
 				c = c ? (c > 10 ? '10+' : c.toString()) : "0";
 				
@@ -144,54 +140,9 @@ function HuobanBackground() {
 		request();
 	}
 }
-
-// A "loading" animation displayed while we wait for the first response from
-// Gmail. This animates the badge text with a dot that cycles from left to
-// right.
-function LoadingAnimation() {
-  this.timerId = 0;
-  this.maxCount = 8;  // Total number of states in animation
-  this.current = 0;  // Current state
-  this.maxDot = 4;  // Max number of dots in animation
-
-	this.paintFrame = function() {
-	  var text = "";
-	  for(var i = 0; i < this.maxDot; i++) {
-	    text += (i == this.current) ? "." : " ";
-	  }
-	  if (this.current >= this.maxDot)
-	    text += "";
-	
-	  chrome.browserAction.setBadgeText({text:text});
-	  this.current++;
-	  if(this.current == this.maxCount)
-	    this.current = 0;
-	};
-	
-	this.start = function() {
-		if(this.timerId) return false;
-		
-		var _this = this;
-		this.timerId = window.setInterval(function() {
-		  _this.paintFrame();
-		}, 100);
-	}
-	
-	this.stop = function() {
-	  if(!this.timerId) return false;
-
-	  window.clearInterval(this.timerId);
-	  this.timerId = 0;
-	}
-}
-// END LoadingAnimation
-
-var LA = new LoadingAnimation();
 var HB = new HuobanBackground();
 
 var isRun = false;
-var notification=null;
-
 function initHandle () {
 	console.log("initHandle");
 	console.log(arguments);

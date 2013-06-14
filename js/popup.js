@@ -122,8 +122,7 @@ function Topic() {
 				}
 			}
 		}
-		
-		if(html == "") return this.matchUser("");
+		// if(html == "") return this.matchUser("");
 		$("#matchUserList").html(html);
 	}
   

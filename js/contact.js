@@ -168,7 +168,7 @@ function HuoBanContact() {
 		html += '<tr><td class="l">QQ号码：</td><td><input type="text" id="userQQ" value="'+(this.QQNumbers[uid] || "")+'"></td></tr>';
 		html += '<tr><td class="l">备注：</td><td><input type="text" id="userRemark" value="'+(setting.remark || "")+'"></td></tr>';
 		// html += '<tr><td class="l"></td><td></td></tr>';
-		html += '<tr><td class="l"></td><td><input type="button" id="saveUserSetting" class="btn btn-primary" value="保存"><span id="saveInfo"></span></td></tr>';
+		html += '<tr><td class="l"></td><td><input type="button" id="saveUserSetting" class="btn btn-right" value="保存"><span id="saveInfo"></span></td></tr>';
 		html += '</table>';
 		this.showDetailLayer(html);
 	}
@@ -181,9 +181,7 @@ function HuoBanContact() {
 			remark: $("#userRemark").val()
 		};
 		
-		setting = JSON.stringify(setting);
 		LDB.set(this.settingKey+this.settingUid, setting);
-		
 		$("#saveInfo").html("保存成功!");
 	}
 }
