@@ -165,7 +165,7 @@ function HuoBanContact() {
 			html += '<option value="'+k+'"'+_selected+'>'+groups[k].name+'</option>';
 		}
 		html += '</select></td></tr>'; 
-		html += '<tr><td class="l">QQ号码：</td><td><input type="text" id="userQQ" value="'+(this.QQNumbers[uid] || "")+'"></td></tr>';
+		html += '<tr><td class="l">QQ号码：</td><td><input type="text" id="userQQ" value="'+(setting.qq || this.QQNumbers[uid] || "")+'"></td></tr>';
 		html += '<tr><td class="l">备注：</td><td><input type="text" id="userRemark" value="'+(setting.remark || "")+'"></td></tr>';
 		// html += '<tr><td class="l"></td><td></td></tr>';
 		html += '<tr><td class="l"></td><td><input type="button" id="saveUserSetting" class="btn btn-right" value="保存"><span id="saveInfo"></span></td></tr>';
