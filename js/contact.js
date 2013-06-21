@@ -97,15 +97,14 @@ function HuoBanContact() {
 			QQNumber = setting.qq || this.QQNumbers[data.uId];
 		
 		data.uGender = data.uGender == 1 ? "男" : (data.uGender == 2 ? "女" : "保密");
-		html += '<div><span class="uName">'+data.uName+'</span>, '+data.uGender+'<div>';
-		if(groups[setting.group]) html += '<div>分组: '+groups[setting.group].name+'<div>';
-		if(data.uJobTitle != "") html += '<div>职务: '+data.uJobTitle+'<div>';
-		if(data.uEmail != "") html += '<div>邮箱: <a href="mailto:'+data.uEmail+'" class="mailto" target="_blank">'+data.uEmail+'</a></div>';
-		if(data.uMobile != "") html += '<div>手机: '+data.uMobile+'<div>';
-		if(data.uTelephone != "") html += '<div>座机: '+data.uTelephone+'<div>';
-		// if(this.QQNumbers[data.uId]) html += '<div>QQ: '+this.QQNumbers[data.uId]+'<div>';
-		if(QQNumber) html += '<div><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin='+QQNumber+'&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:'+this.QQNumbers[data.uId]+':41" alt="给我发消息" title="给我发消息"/></a></div>'
-		if(setting.remark) html += '<div>备注: '+setting.remark+'<div>';
+		html += '<div><span class="uName">'+data.uName+'</span>, '+data.uGender+'</div>';
+		html += groups[setting.group] ? '<div>分组: '+groups[setting.group].name+'</div>' : '';
+		html += data.uJobTitle != "" ? '<div>职务: '+data.uJobTitle+'</div>' : '';
+		html += data.uEmail != "" ? '<div>邮箱: <a href="mailto:'+data.uEmail+'" class="mailto" target="_blank">'+data.uEmail+'</a></div>' : '';
+		html += data.uMobile != "" ? '<div>手机: '+data.uMobile+'</div>' : '';
+		html += data.uTelephone != "" ? '<div>座机: '+data.uTelephone+'</div>' : '';
+		html += QQNumber ? '<div><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin='+QQNumber+'&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:'+QQNumber+':41" alt="给我发消息" title="给我发消息"/></a></div>' : '';
+		html += setting.remark ? '<div>备注: '+setting.remark+'</div>' : '';
 		
 		this.showDetailLayer(html);
 	}
@@ -167,7 +166,6 @@ function HuoBanContact() {
 		html += '</select></td></tr>'; 
 		html += '<tr><td class="l">QQ号码：</td><td><input type="text" id="userQQ" value="'+(setting.qq || this.QQNumbers[uid] || "")+'"></td></tr>';
 		html += '<tr><td class="l">备注：</td><td><input type="text" id="userRemark" value="'+(setting.remark || "")+'"></td></tr>';
-		// html += '<tr><td class="l"></td><td></td></tr>';
 		html += '<tr><td class="l"></td><td><input type="button" id="saveUserSetting" class="btn btn-right" value="保存"><span id="saveInfo"></span></td></tr>';
 		html += '</table>';
 		this.showDetailLayer(html);
