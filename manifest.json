@@ -4,13 +4,14 @@
   "icons": { "128": "images/icon-128.png", "16": "images/icon-16.png" },
   "name": "huoban.com",
   "description": "huoban.com",
-  "version": "1.0",
+  "version": "1.0.3",
 
   "permissions": [
   	"notifications",
   	"alarms",
     "tabs",
     "webNavigation",
+    "cookies",
     "*://*.huoban.com/"
   ],
   "background": {

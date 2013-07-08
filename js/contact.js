@@ -187,6 +187,7 @@ function HuoBanContact() {
 var HBC = new HuoBanContact();
 
 $(function() {
+	huoban.cookies();
 	HBC.init();
 	
 	$("#search").keyup(function() {

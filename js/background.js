@@ -140,6 +140,7 @@ function HuobanBackground() {
 		request();
 	}
 }
+huoban.cookies();
 var HB = new HuobanBackground();
 
 var isRun = false;

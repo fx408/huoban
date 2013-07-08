@@ -166,8 +166,8 @@ $(function() {
 		$("#notRead table").html(html[1]);
 		
 		try{
-			var backWin = chrome.extension.getBackgroundPage(),
-				c = backWin.HB.count(data);
+			var backWin = chrome.extension.getBackgroundPage();
+			var c = backWin.HB.count(data);
 			backWin.HB.updateIcon(c);
 		} catch(e) {
 			console.log(e);
@@ -196,10 +196,12 @@ $(function() {
 		'data[0][body][nextPageSorted]': ''
 	};
 	
-	huoban.request(ajaxUrl, {
-		data: starData,
-		isPost: true,
-		callback: starCallback,
+	huoban.cookies(function() {
+		huoban.request(ajaxUrl, {
+			data: starData,
+			isPost: true,
+			callback: starCallback,
+		});
 	});
 	
 	$("#showMyFavorite").click(function() {

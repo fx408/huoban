@@ -9,13 +9,30 @@ function HuoBan() {
 	this.domain = '.huoban.com';
 	this.list = {};
 	
+	this.cookieCache = {};
+	
 	// 表单数据
   this.formData = function(data) {
   	var fd = new FormData();
   	for(var k in data) {
   		fd.append(k, data[k]);
   	}
+  	fd.append('xsrf', this.cookieCache['xsrf']);
   	return fd;
+  }
+  
+  // 读取cookies
+  this.cookies = function(callback) {
+  	var _this = this;
+  	
+  	chrome.cookies.getAll({}, function(cookies) {
+  		var cookieString = '';
+  		for(var k in cookies) {
+  			_this.cookieCache[cookies[k].name] = cookies[k].value;
+  		}
+  		
+  		callback && callback();
+  	});
   }
   
   // 请求数据
